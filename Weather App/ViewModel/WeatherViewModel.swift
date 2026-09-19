@@ -11,7 +11,7 @@ import Foundation
 class WeatherViewModel {
     var city = ""
     var weather: WeatherResponse?
-    var isLoading: Bool = true
+    var isLoading: Bool = false
     var errorMessage: String?
     
     private let apiKey = "046876cd9b9646c6a2170044261909"
