@@ -15,9 +15,10 @@ struct WeatherView: View {
                 TextField("Enter city name", text: $vm.city)
                     .textFieldStyle(.roundedBorder)
                 
-                Button {
-                    
-                    // TODO: Fetch Weather from VM
+                Button {                    
+                    Task {
+                        try await vm.fetch()
+                    }
                     
                 } label: {
                     Label("Get Weather", systemImage: "cloud.sun.fill")
@@ -30,15 +31,11 @@ struct WeatherView: View {
                         .padding()
                 } else if let weather = vm.weather {
                     WeatherCard(weather: weather)
-                    
-                    Text("display weather card")
                 } else if let errorMessage = vm.errorMessage {
                     Text(errorMessage)
                         .foregroundStyle(.red)
                 }
-                
                 Spacer()
-                
             }
             .navigationTitle("Weather App")
             .padding()

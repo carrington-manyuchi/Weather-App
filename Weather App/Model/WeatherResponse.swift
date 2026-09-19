@@ -27,7 +27,7 @@ struct WeatherResponse: Codable {
 struct Current: Codable {
     let tempC: Double
     let condition: Condition
-    let feelslikeC: Int
+    let feelslikeC: Double
 
     enum CodingKeys: String, CodingKey {
         case tempC = "temp_c"

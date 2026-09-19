@@ -10,7 +10,7 @@ import SwiftUI
 struct WeatherCard: View {
     let weather: WeatherResponse
     var urlString: String {
-        "\(weather.current.condition.icon)"
+        "https:\(weather.current.condition.icon)"
     }
     
     var body: some View {
@@ -54,25 +54,4 @@ struct WeatherCard: View {
         .shadow(radius: 10)
         .padding()
     }
-}
-
-
-extension WeatherResponse {
-    static let sample = WeatherResponse(
-        location: Location(
-            name: "Harare",
-            country: "Zimbabwe"
-        ),
-        current: Current(
-            tempC: 25.5,
-            condition: Condition(
-                text: "Sunny",
-                icon: "//cdn.weatherapi.com/weather/64x64/day/113.png"
-            ), feelslikeC: 4
-        )
-    )
-}
-
-#Preview {
-    WeatherCard(weather: .sample)
 }
