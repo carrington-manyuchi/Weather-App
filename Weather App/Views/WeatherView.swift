@@ -14,6 +14,7 @@ struct WeatherView: View {
             VStack {
                 TextField("Enter city name", text: $vm.city)
                     .textFieldStyle(.roundedBorder)
+                    .autocorrectionDisabled()
                 
                 Button {                    
                     Task {
@@ -25,6 +26,7 @@ struct WeatherView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
+                .disabled(vm.city.isEmpty || vm.city.count < 3)
 
                 if vm.isLoading {
                     ProgressView("Fetching Weather...")
